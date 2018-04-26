@@ -1,0 +1,58 @@
+<html>
+{% block javascripts %}
+    <script src="{{ asset('angular/angular.min.js') }}"></script>
+    <script src="{{ asset('angular/controlleur.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') }}"></script>
+{% endblock %}
+
+{% verbatim %}
+<body ng-app="app" ng-controller="controlleur">
+<br><br><br>
+<!-- Les voitures -->
+<div class="container">
+<h2 style="color: blue;"> Liste des voitures disponibles </h2>
+<table id="voitures" class="table table-striped">
+	<th>Id</th>
+	<th>Marques</th>
+	<th>Modèle</th>
+	<th>Couleur</th>
+	<th>Matricule</th>
+	<th>Prix/Jour</th>
+	<th>Disponibilité</th>
+  <tr ng-repeat="c in cars | filter: rechercheMarque">
+  	<td> {{c.id}} </td>
+  	<td> {{c.marque}} </td>
+  	<td> {{c.modele}} </td>
+  	<td> {{c.couleur}} </td>
+  	<td> {{c.matricule}} </td>
+  	<td> {{c.prix_jour}} </td>
+  	<td> {{c.disponibilite}} </td>	  
+  </tr>
+</table>
+<br> 
+<input type="search" ng-model="rechercheMarque" placeholder="Rechercher par marque" style="width: 200px;">
+<p> {{dtstr}} </p>
+</div>
+<center><button class="btn btn-primary" ng-click="formsh()"> Afficher le formulaire d'ajout </button></center>
+<!-- -->
+
+<!-- Formulaire d'ajout -->
+<br><br><br>
+<form class="form-control" ng-show="sh">
+	Marque : <input type="text" ng-model="marque" class="form-control">
+	Modèle : <input type="text" ng-model="modele" class="form-control">
+	Couleur: <input type="text" ng-model="couleur" class="form-control">
+	Matricule: <input type="text" ng-model="matricule" class="form-control">
+	Date de mise en circulation : <input type="date" placeholder="yyyy-MM-dd" ng-model="datecircu" class="form-control">	
+	Prix/jour : <input type="integer" ng-model="prixJour" class="form-control">
+	Disponibilité :<input type="text" ng-model="disponibilite" class="form-control"><br>
+	<button ng-click="send()" class="btn btn-primary">Ajouter</button> 
+</form>
+{{datecircu | date:'dd/MM/yyyy'}}
+<!-- -->
+{% endverbatim %}
+</body>
+</html>

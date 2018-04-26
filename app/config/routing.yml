@@ -1,0 +1,33 @@
+location_user:
+    resource: "@LocationUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+accueil:
+    path:   /voitures_disponibles
+    defaults:  { _controller: AppBundle:Default:afficherVoitures, _format: ~ } 
+    requirements:
+        methods: GET   
+
+article:
+    path:   /voitures
+    defaults:  { _controller: AppBundle:Default:voiture }
+
+ajouter_voiture:
+  path: /ajouterVoiture
+  defaults: { _controller: AppBundle:Default:ajouterVoiture }     
+
+task_success:
+  path: /success
+  defaults: { _controller: AppBundle:Default:success }
+
+postData:
+  path: /postData
+  defaults: { _controller: AppBundle:Default:post }

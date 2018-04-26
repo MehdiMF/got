@@ -1,0 +1,40 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<center> <p> <h2>Liste des voitures disponibles</h2> </p><br><br></center>
+<div class="container">
+<table class="table">
+	<th>Id</th>
+	<th>Marque</th>
+	<th>Modèle</th>
+	<th>Couleur</th>
+	<th>Matricule</th>
+	<th>Date de mise en circulation</th>
+	<th>Prix/jour</th>
+	<th>Disponibilité</th>
+{% for v in voitures %}
+	<tr>
+		<td> {{ v.id }}</td>
+		<td> {{ v.marque }}</td>
+        <td> {{v.modele}} </td>
+        <td> {{v.couleur}} </td>
+        <td> {{v.matricule}} </td>
+        <td> {{v.dateCircu |date('d/m/Y')}} </td>
+        <td> {{v.prixJour}} </td>
+        <td> {{v.disponibilite}} </td>
+{% endfor %}
+   </tr>
+</table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+Entités : 
+
+- Voiture : 
+  
+  * id
+  * marque (varchar 20)
+  * model (varchar 20)
+  * matricule (varchar  10)
+  * couleur (varchar 10)
+  * date_mise_en_circulation(dateTime)
+  * prix_jour(float)
+  * disponible(boolean)
+
+- Location :
+
+  * id
+  * id_voiture(foreign key(voiture))
+  * date_sortie(dateTime)
+  * date_retour(dateTime)
+  * montant(float)
+
+Fonctionnalités : 
+
+- Affichage des voitures disponibles : Sélectionner les voitures dont le champ disponible = true. (voitures_disponibles.html).
+
+- Affichage de toutes les voitures.  (voitures.html ; url : voitures).
+
+- Créer une nouvelle location : formulaire (nouvelle_location.html ; url : nouvelle_location) :
+
+                                           * id généré auto
+                                           * id_voiture : listBox remplie des id des voitures disponibles
+                                           * date_sortie : champ date
+                                           * date_retour : champ date
+                                           * montant : prix_jour qui s'affiche dans le champ prix grisé après sélection du
+                                                       id de la voiture, le nombre de jours calculé : date_retour-date-sortie,
+                                                       calcul du montant : prix_jour * nbr_jours puis affiché dans le champ montant
+                                                       lui aussi grisé.
+                                           -> Modifier la valeur du champ disponible en false de la voiture louée.            
+- Ajouter une nouvelle voiture : formulaire: 
+
+                                           * id généré  auto
+                                           * marque(text)
+                                           * model(text)
+                                           * matricule(text)
+                                           * couleur(text)
+                                           * date_mise_circu(date)
+                                           * prix_jour(number)
+                                           * disponible automatiquement true sans en faire un champ dans le formulaire(default value).
+                                           
+ ->Url voitures : En plus de la liste, ajouter : 
+
+                                           * Formulaire d'ajout d'une nouvelle voiture.
+                                           * Boutons supprimer et modifer dans chaque ligne de la liste.
+
